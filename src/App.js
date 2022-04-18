@@ -8,9 +8,9 @@ export default function App() {
     <Router >
     <Layout>
       <Routes >
-        <Route path = '' element = {<Blog/>} />
-        <Route path = 'category/:category' element = {<Category/>} />
-        <Route path = 'blog/:id' element = {<BlogDetail/>} />
+        <Route path = '/' element = {<Blog/>} />
+        <Route path = '/category/:category' element = {<Category/>} />
+        <Route path = '/blog/:id' element = {<BlogDetail/>} />
       </Routes>
     </Layout>
   </Router>
