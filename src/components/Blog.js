@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {Link} from 'react-router-dom';
-import {getFirsthData, getAllData} from '../myTools/FetchData'
+import {getFirstData, getAllData} from '../myTools/FetchData'
 import {capitalizeFirstLetter} from '../myTools/Mixed'
 
 const Blog = () => {
@@ -11,14 +11,14 @@ const Blog = () => {
     // Get the first blog of the table of blogs (last blog) to show it on the top of the Home page 
     useEffect(() => { 
         const env = process.env.REACT_APP_API_URL ;
-        const rest_of_link = '/api/blog/featured' ; // Rest of link we will add after the link in .env
-        getFirsthData(env, rest_of_link, setFeaturedBlog);
+        const rest_of_link = 'api/blog/featured' ; // Rest of link we will add after the link in .env
+        getFirstData(env, rest_of_link, setFeaturedBlog);
     },[] );
 
     // Get all the blogs to show them in the Home page
     useEffect(() => {
         const env = process.env.REACT_APP_API_URL ;
-        const rest_of_link = `/api/blog/`;
+        const rest_of_link = `api/blog/`;
         getAllData(env, rest_of_link, setBlogs);
     }, []);
     

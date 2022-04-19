@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Fetch the first row data of the table from database
-export const getFirsthData = async (link_of_env, rest_of_link, set_data) => {
+export const getFirstData = async (link_of_env, rest_of_link, set_data) => {
 
     try {
         const res = await axios.get(`${link_of_env}${rest_of_link}`);
