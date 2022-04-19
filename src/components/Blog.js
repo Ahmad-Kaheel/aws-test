@@ -66,6 +66,7 @@ const Blog = () => {
                     <Link className="nav-link active " to='/category/business'>Business</Link>
                 </nav>
             </div>
+            title = {featuredBlog.title}
             <div className="p-4 p-md-5 mb-4 text-white rounded bg-dark">
                 <div className="col-md-6 px-0">
                     <h1 className="display-4 font-italic">{featuredBlog.title}</h1>
