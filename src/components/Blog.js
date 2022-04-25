@@ -14,7 +14,7 @@ const Blog = () => {
         const rest_of_link = '/api/blog/featured' ; // Rest of link we will add after the link in .env
         getFirstData(env, rest_of_link, setFeaturedBlog);
     },[] );
-
+    
     // Get all the blogs to show them in the Home page
     useEffect(() => {
         const env = process.env.REACT_APP_API_URL ;
@@ -66,7 +66,6 @@ const Blog = () => {
                     <Link className="nav-link active " to='/category/business'>Business</Link>
                 </nav>
             </div>
-            title = {featuredBlog.title}
             <div className="p-4 p-md-5 mb-4 text-white rounded bg-dark">
                 <div className="col-md-6 px-0">
                     <h1 className="display-4 font-italic">{featuredBlog.title}</h1>
