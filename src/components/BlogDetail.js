@@ -11,14 +11,10 @@ const BlogDetail = () => {
     
     // get the details of the blog 
     useEffect(() => {
-        const config = {
-            headers:{
-                'Content-Type': 'application/json'
-            }
-        };
+        
         const getAllData = async () => {
             try {
-                const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/blog/id`,{id}, config);
+                const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/blog/${id}`);
                 setBlog(res.data);
             } catch (err) {
                 
