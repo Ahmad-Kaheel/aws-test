@@ -38,7 +38,7 @@ const Category = () => {
                             <h3 className="mb-0">{blogPost.title}</h3>
                             <div className="mb-1 text-muted">{blogPost.date}</div>
                             <p className="card-text mb-auto">{blogPost.excerpt}</p>
-                            <Link to={blogPost.slug} className="stretched-link">Continue reading</Link>
+                            <Link to={blogPost.id} className="stretched-link">Continue reading</Link>
                         </div>
                         <div className="col-auto d-none d-lg-block"></div>
                         <img src={blogPost.thumbnail} width="200" height="250" alt="Thumbnail"></img>
