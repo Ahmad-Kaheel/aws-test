@@ -5,13 +5,13 @@ import {removeHTMLTags} from '../myTools/Mixed'
 import {capitalizeFirstLetter} from '../myTools/Mixed'
 import axios from 'axios';
 
-const BlogDetail = (props) => {
+const BlogDetail = () => {
     const [blog, setBlog] = useState({});
     const {id} = useParams(); // Get the id from the link in the App.js file 
     
     // get the details of the blog 
     useEffect(() => {
-        const id = props.match.params.id;
+        // const id = props.match.params.id;
         const getAllData = async () => {
             try {
                 const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/blog/${id}`);

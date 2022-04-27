@@ -1,26 +1,49 @@
 import React, {useState, useEffect} from "react";
 import {Link} from 'react-router-dom';
-import {getFirstData, getAllData} from '../myTools/FetchData'
-import {capitalizeFirstLetter} from '../myTools/Mixed'
+// import {getFirstData, getAllData} from '../myTools/FetchData'
+// import {capitalizeFirstLetter} from '../myTools/Mixed'
+import axios from 'axios';
 
 const Blog = () => {
-
-    const [blogs, setBlogs] = useState([]);
-    const [featuredBlog, setFeaturedBlog] = useState([]);
+        const [blogs, setBlogs] = useState([]);
+        const [featuredBlog, setFeaturedBlog] = useState([]);
     
-    // Get the first blog of the table of blogs (last blog) to show it on the top of the Home page 
-    useEffect(() => { 
-        const env = process.env.REACT_APP_API_URL ;
-        const rest_of_link = '/api/blog/featured' ; // Rest of link we will add after the link in .env
-        getFirstData(env, rest_of_link, setFeaturedBlog);
-    },[] );
+        // Get the first blog of the table of blogs (last blog) to show it on the top of the Home page 
+        useEffect(() => {
+            const fetchData = async () => {
+                try {
+                    const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/blog/featured`);
+                    setFeaturedBlog(res.data[0]);
+                    console.log(res.data)
+                }
+                catch (err) {
+    
+                }
+            }
+    
+            fetchData();
+        }, []);
 
-    // Get all the blogs to show them in the Home page
-    useEffect(() => {
-        const env = process.env.REACT_APP_API_URL ;
-        const rest_of_link = `/api/blog/`;
-        getAllData(env, rest_of_link, setBlogs);
-    }, []);
+        // Get all the blogs to show them in the Home page
+        useEffect(() => {
+            const fetchBlogs = async () => {
+                try {
+                    const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/blog/`);
+                    setBlogs(res.data);
+                }
+                catch (err) {
+    
+                }
+            }
+    
+            fetchBlogs();
+        }, []);
+    
+        const capitalizeFirstLetter = (word) => {
+            if (word)
+                return word.charAt(0).toUpperCase() + word.slice(1);
+            return '';
+        };
     
     // Get all blogs 
     const getBlogs = () => {
