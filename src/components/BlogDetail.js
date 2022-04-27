@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from "react";
 import {Link, useParams} from 'react-router-dom';
-import {getAllData} from '../myTools/FetchData';
+// import {getAllData} from '../myTools/FetchData';
 import {removeHTMLTags} from '../myTools/Mixed'
 import {capitalizeFirstLetter} from '../myTools/Mixed'
+import axios from 'axios';
 
 const BlogDetail = () => {
     const [blog, setBlog] = useState({});
@@ -10,9 +11,15 @@ const BlogDetail = () => {
     
     // get the details of the blog 
     useEffect(() => {
-        const env = process.env.REACT_APP_API_URL ;
-        const rest_of_link = `/api/blog/${id}` ; // Rest of link we will be added after the link in .env
-        getAllData(env, rest_of_link, setBlog)
+        const getAllData = async () => {
+            try {
+                const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/blog/id`,{id});
+                setBlog(res.data);
+            } catch (err) {
+                
+            }
+        }
+        getAllData()
     },[id]); 
     
     // To not show html tags of the content of summerNote field in the page of blog details  
